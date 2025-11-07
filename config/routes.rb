@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+get "/about", to: "pages#about"
+
   # Root route
   root "characters#index"
 
