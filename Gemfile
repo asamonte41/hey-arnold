@@ -17,12 +17,12 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
-#Added stuff
+# Added stuff
 gem "faker"
 gem "httparty"      # to pull from the Hey Arnold API
 gem "kaminari"      # pagination
 gem "bootstrap", "~> 5.0"   # optional styling
-
+gem "sassc-rails"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
