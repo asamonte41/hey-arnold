@@ -1,4 +1,4 @@
-class Appearnace < ApplicationRecord
+class Appearance < ApplicationRecord
   belongs_to :character
   belongs_to :episode
 end

@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_11_07_172158) do
+ActiveRecord::Schema[8.0].define(version: 2025_11_07_174324) do
+  create_table "appearances", force: :cascade do |t|
+    t.integer "character_id", null: false
+    t.integer "episode_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["character_id"], name: "index_appearances_on_character_id"
+    t.index ["episode_id"], name: "index_appearances_on_episode_id"
+  end
+
   create_table "appearnaces", force: :cascade do |t|
     t.integer "character_id", null: false
     t.integer "episode_id", null: false
@@ -36,7 +45,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_07_172158) do
     t.integer "season"
     t.integer "episode_number"
     t.date "air_date"
-    t.text "sypnosis"
+    t.text "synopsis"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -48,6 +57,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_07_172158) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "appearances", "characters"
+  add_foreign_key "appearances", "episodes"
   add_foreign_key "appearnaces", "characters"
   add_foreign_key "appearnaces", "episodes"
   add_foreign_key "characters", "locations"

@@ -1,70 +1,58 @@
-require "faker"
-require "httparty"
+# db/seeds.rb
 
 puts "Clearing old data..."
+
+# Destroy all records in the correct order to avoid foreign key issues
 Appearance.destroy_all
-Character.destroy_all
 Episode.destroy_all
+Character.destroy_all
 Location.destroy_all
 
-# Locations
 puts "Creating locations..."
-hillwood = Location.create!(name: "Hillwood", description: "Arnold's home neighborhood.")
-school   = Location.create!(name: "P.S. 118", description: "Hey Arnold school building.")
+locations = [
+  { name: "Hillwood", description: "The city where Arnold and friends live" },
+  { name: "P.S. 118", description: "Arnold's school" },
+  { name: "The Park", description: "Local hangout spot" }
+]
 
-# --- 1️⃣  Fetch real characters from Hey Arnold API ---
-puts "Fetching characters from API..."
-begin
-  res = HTTParty.get("https://hey-arnold-api.herokuapp.com/api/v1/characters")
-  if res.success?
-    res.parsed_response.each do |char|
-      Character.create!(
-        name: char["name"] || char["characterName"],
-        role: char["nickname"] || "Unknown",
-        description: char["description"] || "Character from Hey Arnold!",
-        image_url: char["image"] || char["imageUrl"],
-        location: [hillwood, school].sample
-      )
-    end
-  else
-    puts "API error #{res.code}"
-  end
-rescue => e
-  puts "Could not reach API: #{e.message}"
+locations.each do |loc|
+  Location.create!(loc)
 end
 
-# --- 2️⃣  Faker-generated data ---
-puts "Adding Faker characters..."
-50.times do
-  Character.create!(
-    name: Faker::TvShows::HeyArnold.character,
-    role: Faker::TvShows::HeyArnold.quote[0..20],
-    description: Faker::TvShows::HeyArnold.quote,
-    image_url: "https://placekitten.com/200/300",
-    location: [hillwood, school].sample
-  )
+puts "Creating characters..."
+characters = [
+  { name: "Arnold", role: "Protagonist", description: "The main character", image_url: "https://example.com/arnold.png", location: Location.find_by(name: "Hillwood") },
+  { name: "Gerald", role: "Best Friend", description: "Arnold's best friend", image_url: "https://example.com/gerald.png", location: Location.find_by(name: "Hillwood") },
+  { name: "Helga", role: "Antagonist / Secret admirer", description: "Helga bullies Arnold but secretly loves him", image_url: "https://example.com/helga.png", location: Location.find_by(name: "Hillwood") }
+]
+
+characters.each do |char|
+  Character.create!(char)
 end
 
-# Episodes
 puts "Creating episodes..."
-100.times do |i|
+episodes_data = [
+  { title: "Downtown as Fruits", season: 1, episode_number: 1, air_date: '1996-10-07' },
+  { title: "The Journal", season: 1, episode_number: 2, air_date: '1996-10-14' },
+  { title: "Ghost Bride", season: 2, episode_number: 1, air_date: '1997-03-01' }
+]
+
+episodes_data.each do |ep|
   Episode.create!(
-    title: Faker::TvShows::HeyArnold.episode || "Episode #{i}",
-    season: rand(1..5),
-    episode_number: rand(1..20),
-    air_date: Faker::Date.between(from: "1996-01-01", to: "2005-01-01"),
-    synopsis: Faker::TvShows::HeyArnold.quote
+    title: ep[:title],
+    season: ep[:season],
+    episode_number: ep[:episode_number],
+    air_date: ep[:air_date],
+    synopsis: Faker::Lorem.sentence(word_count: 12)
   )
 end
 
-# Appearances (join records)
-puts "Linking characters and episodes..."
-characters = Character.all
-episodes = Episode.all
-characters.each do |c|
-  episodes.sample(rand(1..3)).each do |e|
-    Appearance.create!(character: c, episode: e)
+puts "Creating appearances..."
+# Link characters to episodes randomly
+Episode.all.each do |ep|
+  Character.all.sample(rand(1..Character.count)).each do |char|
+    Appearance.create!(character: char, episode: ep)
   end
 end
 
-puts "✅ Seeded #{Character.count} characters, #{Episode.count} episodes, #{Location.count} locations, #{Appearance.count} appearances."
+puts "Seeding complete!"
