@@ -1,0 +1,10 @@
+<h1>Episodes</h1>
+
+<% @episodes.each do |e| %>
+  <div class="border p-2 mb-2">
+    <h4><%= link_to e.title, episode_path(e) %></h4>
+    <p>Season <%= e.season %> – Episode <%= e.episode_number %></p>
+  </div>
+<% end %>
+
+<%= paginate @episodes %>

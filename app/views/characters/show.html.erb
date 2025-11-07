@@ -1,0 +1,16 @@
+<h1><%= @character.name %></h1>
+<p><strong>Role:</strong> <%= @character.role %></p>
+<p><%= @character.description %></p>
+
+<% if @character.image_url.present? %>
+  <img src="<%= @character.image_url %>" width="200">
+<% end %>
+
+<h3>Appears In:</h3>
+<ul>
+  <% @character.episodes.each do |e| %>
+    <li><%= link_to e.title, episode_path(e) %></li>
+  <% end %>
+</ul>
+
+<p>Location: <%= @character.location&.name %></p>

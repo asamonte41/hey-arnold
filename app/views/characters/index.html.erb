@@ -1,0 +1,16 @@
+<h1>Hey Arnold Characters</h1>
+
+<%= form_tag characters_path, method: :get do %>
+  <%= text_field_tag :query, params[:query], placeholder: "Search by name or role" %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+<% @characters.each do |c| %>
+  <div class="card mb-3 p-3">
+    <h3><%= link_to c.name, character_path(c) %></h3>
+    <p><strong>Role:</strong> <%= c.role %></p>
+    <p><%= truncate(c.description, length: 120) %></p>
+  </div>
+<% end %>
+
+<%= paginate @characters %>
