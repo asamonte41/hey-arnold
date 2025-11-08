@@ -5,11 +5,11 @@ one:
   season: 1
   episode_number: 1
   air_date: 2025-11-07
-  sypnosis: MyText
+  synopsis: MyText
 
 two:
   title: MyString
   season: 1
   episode_number: 1
   air_date: 2025-11-07
-  sypnosis: MyText
+  synopsis: MyText

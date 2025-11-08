@@ -1,7 +1,8 @@
 require "test_helper"
 
 class CharacterTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "character is valid with required fields" do
+    c = Character.new(name: "Arnold", role: "Student", description: "Kind boy")
+    assert c.valid?
+  end
 end

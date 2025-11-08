@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-get "/about", to: "pages#about"
-
   # Root route
   root "characters#index"
 
@@ -8,6 +6,8 @@ get "/about", to: "pages#about"
   resources :characters, only: [ :index, :show ]
   resources :episodes, only: [ :index, :show ]
   resources :locations, only: [ :index, :show ]
+
+  get "about", to: "pages#about"
 
   # Health check for uptime monitors
   get "up" => "rails/health#show", as: :rails_health_check
