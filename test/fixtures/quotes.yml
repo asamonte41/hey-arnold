@@ -1,11 +1,12 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  text: MyString
-  character: one
-  episodes: one
+  text: "Move it, football head!"
+  character: one   # refers to characters.yml label
+  episode: one     # refers to episodes.yml label
 
 two:
-  text: MyString
+  text: "I secretly love you, Arnold."
   character: two
-  episodes: two
+  episode: two
+

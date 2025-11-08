@@ -17,8 +17,19 @@ development:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
-  database: storage/test.sqlite3
+  primary:
+    <<: *default
+    database: db/test.sqlite3
+  cache:
+    <<: *default
+    database: db/test-cache.sqlite3
+  queue:
+    <<: *default
+    database: db/test-queue.sqlite3
+  cable:
+    <<: *default
+    database: db/test-cable.sqlite3
+
 
 
 # Store production database in the storage/ directory, which by default

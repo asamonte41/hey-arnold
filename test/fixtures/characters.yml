@@ -1,15 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  role: MyString
-  description: MyText
-  image_url: MyString
-  location: one
+  name: "Arnold"
+  role: "Protagonist"
+  description: "Smart, kind, and brave."
+  image_url: "arnold.png"
+  location: one   # refers to locations.yml label
 
 two:
-  name: MyString
-  role: MyString
-  description: MyText
-  image_url: MyString
+  name: "Helga"
+  role: "Antagonist/Complex"
+  description: "Tough exterior but secretly loves Arnold."
+  image_url: "helga.png"
   location: two

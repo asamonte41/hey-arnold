@@ -1,15 +1,16 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
+  title: "Downtown Adventure"
   season: 1
   episode_number: 1
   air_date: 2025-11-07
-  synopsis: MyText
+  synopsis: "Arnold explores the city with friends."
 
 two:
-  title: MyString
+  title: "Helga's Secret"
   season: 1
-  episode_number: 1
+  episode_number: 2
   air_date: 2025-11-07
-  synopsis: MyText
+  synopsis: "Helga's secret crush on Arnold is revealed."
+
