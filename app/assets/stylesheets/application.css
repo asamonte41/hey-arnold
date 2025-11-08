@@ -8,3 +8,8 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+.character-photo {
+  border-radius: 8px;
+  object-fit: cover;
+  border: 2px solid #ddd;
+}

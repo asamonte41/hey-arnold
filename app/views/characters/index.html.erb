@@ -6,11 +6,22 @@
 <% end %>
 
 <% @characters.each do |c| %>
-  <div class="card mb-3 p-3">
-    <h3><%= link_to c.name, character_path(c) %></h3>
-    <p><strong>Role:</strong> <%= c.role %></p>
-    <p><%= truncate(c.description, length: 120) %></p>
+  <div class="card mb-3 p-3 d-flex flex-row align-items-center">
+    <!-- Character Image -->
+    <div style="margin-right: 20px;">
+      <% if c.image_url.present? %>
+        <%= image_tag("characters/#{c.image_url}", alt: c.name, class: "character-photo", width: 120, height: 120) %>
+      <% else %>
+        <%= image_tag("characters/default.png", alt: "No image", width: 120, height: 120) %>
+      <% end %>
+    </div>
+
+    <!-- Character Info -->
+    <div>
+      <h3><%= link_to c.name, character_path(c) %></h3>
+      <p><strong>Role:</strong> <%= c.role %></p>
+      <p><%= truncate(c.description, length: 120) %></p>
+    </div>
   </div>
 <% end %>
 
-<%= paginate @characters %>
