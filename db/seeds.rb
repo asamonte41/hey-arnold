@@ -2,10 +2,11 @@
 
 puts "Seeding data..."
 
-# Clear old data first
+# Clear all data first (order matters for foreign keys)
 Quote.destroy_all
-Episode.destroy_all
+Appearance.destroy_all
 Character.destroy_all
+Episode.destroy_all
 Location.destroy_all
 
 # --- Locations ---

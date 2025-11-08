@@ -17,8 +17,11 @@
 <hr>
 
 <h2>Quotes from This Episode</h2>
-<% @quotes.each do |q| %>
-  <p>"<%= q.text %>" – <%= q.character&.name || "Unknown Character" %></p>
-<% end %>
 
-<p><%= link_to "Back to Episodes", episodes_path, class: "btn btn-secondary mt-3" %></p>
+<% if @quotes.present? %>
+  <% @quotes.each do |q| %>
+    <p>"<%= q.text %>" – <%= q.character&.name || "Unknown Character" %></p>
+  <% end %>
+<% else %>
+  <p>No quotes available for this episode.</p>
+<% end %>
