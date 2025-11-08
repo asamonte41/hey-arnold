@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_11_07_174324) do
+ActiveRecord::Schema[8.0].define(version: 2025_11_08_144236) do
   create_table "appearances", force: :cascade do |t|
     t.integer "character_id", null: false
     t.integer "episode_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index [ "character_id" ], name: "index_appearances_on_character_id"
-    t.index [ "episode_id" ], name: "index_appearances_on_episode_id"
+    t.index ["character_id"], name: "index_appearances_on_character_id"
+    t.index ["episode_id"], name: "index_appearances_on_episode_id"
   end
 
   create_table "characters", force: :cascade do |t|
@@ -28,7 +28,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_07_174324) do
     t.integer "location_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index [ "location_id" ], name: "index_characters_on_location_id"
+    t.index ["location_id"], name: "index_characters_on_location_id"
   end
 
   create_table "episodes", force: :cascade do |t|
@@ -48,7 +48,19 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_07_174324) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "quotes", force: :cascade do |t|
+    t.string "text"
+    t.integer "character_id", null: false
+    t.integer "episodes_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["character_id"], name: "index_quotes_on_character_id"
+    t.index ["episodes_id"], name: "index_quotes_on_episodes_id"
+  end
+
   add_foreign_key "appearances", "characters"
   add_foreign_key "appearances", "episodes"
   add_foreign_key "characters", "locations"
+  add_foreign_key "quotes", "characters"
+  add_foreign_key "quotes", "episodes", column: "episodes_id"
 end

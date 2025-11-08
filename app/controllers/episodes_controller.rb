@@ -1,6 +1,7 @@
 class EpisodesController < ApplicationController
   def index
-    @episodes = Episode.paginate(page: params[:page], per_page: 10)
+    # Kaminari pagination
+    @episodes = Episode.page(params[:page]).per(10)
   end
 
   def show

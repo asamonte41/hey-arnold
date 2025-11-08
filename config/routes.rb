@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "quotes/index"
   # Root route
   root "characters#index"
 
