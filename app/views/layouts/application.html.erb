@@ -14,14 +14,27 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
 
-    <%# Only include application.css, remove app.js reference %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload", media: "all" %>
-
-    <%# Importmap JavaScript tag handles JS automatically %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= yield %>
+    <!-- 🌟 Global Navigation Bar -->
+    <nav style="background-color:#f6c945; padding:10px 20px; display:flex; align-items:center; justify-content:space-between;">
+      <div style="font-weight:bold; font-size:1.4em;">
+        <%= link_to "Hey Arnold!", root_path, style: "color:#000; text-decoration:none;" %>
+      </div>
+
+      <div>
+        <%= link_to "Characters", characters_path, style: "margin-right:15px; color:#000;" %>
+        <%= link_to "Episodes", episodes_path, style: "margin-right:15px; color:#000;" %>
+        <%= link_to "About", about_path, style: "color:#000;" %>
+      </div>
+    </nav>
+
+    <!-- 🌟 Main Page Content -->
+    <main style="padding: 20px;">
+      <%= yield %>
+    </main>
   </body>
 </html>

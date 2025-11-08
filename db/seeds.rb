@@ -82,7 +82,7 @@ characters = [
     name: "Grandma Gertie",
     role: "Arnold’s grandmother",
     description: "Loving and quirky, with a flair for the dramatic.",
-    image_url: "grandma,jpg",
+    image_url: "grandma.jpg",
     location: boarding_house
   }
 ]

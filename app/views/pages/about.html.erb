@@ -1,11 +1,22 @@
 <h1>This is for my Intro to Rails Project</h1>
-<p>This app uses two data sources:</p>
+
+<p>This app uses two data sources to display information about the Hey Arnold universe:</p>
+
 <ul>
-  <li>Faker – <code>Faker::TvShows::HeyArnold</code> for characters, quotes, and episodes.</li>
-  <li>Hey Arnold API – <a href="https://github.com/aramirezdecruz3148/hey-arnold-api" target="_blank">GitHub Repo</a></li>
+  <li>Faker – <code>Faker::TvShows::HeyArnold</code> for generating characters, quotes, and episodes.</li>
+  <li>Hey Arnold API – <a href="https://github.com/aramirezdecruz3148/hey-arnold-api" target="_blank">GitHub Repo</a> for real episode and character data.</li>
 </ul>
 
-<p>It displays Hey Arnold characters, their locations, and episodes they appear in.</p>
+<p>The data pulled from these sources is structured in a way that allows the app to display characters, their locations, and the episodes they appear in. Characters have attributes such as name, age, and home location. Episodes include title, season, and a list of appearing characters. Quotes are linked to both characters and episodes.</p>
+
+<p>To manage this data, the app uses several database tables:</p>
+<ul>
+  <li><strong>Characters:</strong> id, name, age, location</li>
+  <li><strong>Episodes:</strong> id, title, season</li>
+  <li><strong>Quotes:</strong> id, text, character_id, episode_id</li>
+</ul>
+
+<p>The integration between datasets is handled through relational links. For example, quotes reference both the character who said them and the episode they appear in. This ensures that data from Faker and the Hey Arnold API can be combined seamlessly, providing a complete view of the Hey Arnold world.</p>
 
 <h2>ERD</h2>
 <img src="/images/erd.png" alt="ERD diagram">
