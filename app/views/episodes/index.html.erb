@@ -1,36 +1,13 @@
 <h1>Episodes</h1>
-<p>Hover over an episode title to see characters and quotes.</p>
 
-<% @episodes.each do |e| %>
-  <div class="border p-2 mb-2 episode-card" style="position: relative;">
-    <h4 class="episode-title">
-      <%= link_to e.title, episode_path(e) %>
-    </h4>
-    <p>Season <%= e.season %> – Episode <%= e.episode_number %></p>
-
-    <!-- Hover preview -->
-    <div class="episode-preview border p-2" style="display:none; position:absolute; top:100%; left:0; background:white; z-index:10; width:300px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
-      <h5>Characters:</h5>
-      <ul>
-        <% e.characters.limit(5).each do |c| %>
-          <li><%= c.name %></li>
-        <% end %>
-        <% if e.characters.count > 5 %>
-          <li>+ <%= e.characters.count - 5 %> more</li>
-        <% end %>
-      </ul>
-
-      <h5>Quotes:</h5>
-      <ul>
-        <% e.quotes.limit(3).each do |q| %>
-          <li>"<%= truncate(q.text, length: 50) %>"</li>
-        <% end %>
-        <% if e.quotes.count > 3 %>
-          <li>+ <%= e.quotes.count - 3 %> more</li>
-        <% end %>
-      </ul>
+<% if @episodes.present? %>
+  <% @episodes.each do |e| %>
+    <div class="border p-2 mb-2">
+      <h4><%= link_to e.title, episode_path(e) %></h4>
+      <p>Season <%= e.season %> – Episode <%= e.episode_number %></p>
     </div>
-  </div>
+  <% end %>
+  <%= paginate @episodes %>
+<% else %>
+  <p>No episodes available.</p>
 <% end %>
-
-<%= paginate @episodes %>

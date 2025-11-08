@@ -1,27 +1,32 @@
-<h1>Hey Arnold Characters</h1>
+<h1>Characters</h1>
 
-<%= form_tag characters_path, method: :get do %>
-  <%= text_field_tag :query, params[:query], placeholder: "Search by name or role" %>
-  <%= submit_tag "Search" %>
-<% end %>
+<% if @characters.present? %>
+  <% @characters.each do |c| %>
+    <div class="card mb-3 p-3 d-flex flex-row align-items-center">
+      <div style="margin-right: 20px;">
 
-<% @characters.each do |c| %>
-  <div class="card mb-3 p-3 d-flex flex-row align-items-center">
-    <!-- Character Image -->
-    <div style="margin-right: 20px;">
-      <% if c.image_url.present? %>
-        <%= image_tag("characters/#{c.image_url}", alt: c.name, class: "character-photo", width: 120, height: 120) %>
-      <% else %>
-        <%= image_tag("characters/default.png", alt: "No image", width: 120, height: 120) %>
-      <% end %>
+        <% if c.image_url.present? %>
+          <%
+            # If the image URL starts with "http", treat it as an external URL.
+            # Otherwise, load it from /app/assets/images/characters.
+          %>
+          <% if c.image_url.start_with?("http") %>
+            <%= image_tag c.image_url, alt: c.name, width: 100 %>
+          <% else %>
+            <%= image_tag "characters/#{c.image_url}", alt: c.name, width: 100 %>
+          <% end %>
+        <% else %>
+          <%= image_tag "placeholder.png", width: 100, alt: "Placeholder image" %>
+        <% end %>
+
+      </div>
+
+      <div>
+        <h3><%= link_to (c.name.presence || "Unknown Character"), character_path(c) %></h3>
+        <p><%= c.role.presence || "No role information available." %></p>
+      </div>
     </div>
-
-    <!-- Character Info -->
-    <div>
-      <h3><%= link_to c.name, character_path(c) %></h3>
-      <p><strong>Role:</strong> <%= c.role %></p>
-      <p><%= truncate(c.description, length: 120) %></p>
-    </div>
-  </div>
+  <% end %>
+<% else %>
+  <p>No characters found.</p>
 <% end %>
-

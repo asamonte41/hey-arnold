@@ -1,11 +1,16 @@
 class EpisodesController < ApplicationController
   def index
-    @episodes = Episode.order(:season, :episode_number).page(params[:page]).per(15)
+    @episodes = Episode.paginate(page: params[:page], per_page: 10)
   end
 
- def show
-  @episode = Episode.find(params[:id])
-  @characters = @episode.characters # assuming Episode `has_many :characters, through: :episode_characters`
-  @quotes = @episode.quotes         # assuming Episode `has_many :quotes`
+  def show
+    @episode = Episode.find_by(id: params[:id])
+    if @episode.nil?
+      redirect_to episodes_path, alert: "Episode not found."
+      return
+    end
+
+    @characters = @episode.characters if @episode.respond_to?(:characters)
+    @quotes = @episode.quotes if @episode.respond_to?(:quotes)
   end
 end
