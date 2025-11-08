@@ -1,37 +1,13 @@
-<% if @character.present? %>
-  <h1><%= @character.name %></h1>
-  <p><strong>Role:</strong> <%= @character.role %></p>
-  <p><%= @character.description %></p>
+<h1><%= @character.name.presence || "Unknown Character" %></h1>
+<p><strong>Role:</strong> <%= @character.role.presence || "No role information" %></p>
+<p><%= @character.description.presence || "No description available." %></p>
 
-  <% if @character.image_url.present? %>
-    <%= image_tag @character.image_url, width: 200, class: "mb-3" %>
-  <% end %>
-
-  <hr>
-
-  <h2>Episodes Appeared In</h2>
-  <% if @episodes.present? %>
-    <ul>
-      <% @episodes.each do |e| %>
-        <li><%= link_to e.title, episode_path(e) %></li>
-      <% end %>
-    </ul>
-  <% else %>
-    <p>No episode data available.</p>
-  <% end %>
-
-  <hr>
-
-  <h2>Quotes</h2>
-  <% if @quotes.present? %>
-    <ul>
-      <% @quotes.each do |q| %>
-        <li>"<%= q.text %>"</li>
-      <% end %>
-    </ul>
-  <% else %>
-    <p>No quotes available for this character.</p>
-  <% end %>
+<% if @character.image_url.present? %>
+  <%# If image URL is external, use it directly; otherwise, prepend folder path %>
+  <% image_path = @character.image_url.start_with?("http") ? @character.image_url : "characters/#{@character.image_url}" %>
+  <%= image_tag image_path, width: 200, class: "mb-3", alt: @character.name %>
 <% else %>
-  <p>Character not found.</p>
+  <%= image_tag "placeholder.png", width: 200, class: "mb-3", alt: "Placeholder" %>
 <% end %>
+
+<hr>

@@ -32,3 +32,8 @@
 .container {
   max-width: 900px;
 }
+
+.nav-link.active {
+  font-weight: bold;
+  text-decoration: underline;
+}

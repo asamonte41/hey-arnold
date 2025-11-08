@@ -1,4 +1,4 @@
 class Quote < ApplicationRecord
   belongs_to :character
-  belongs_to :episodes
+  belongs_to :episode
 end

@@ -4,12 +4,7 @@
   <% @quotes.each do |q| %>
     <div class="border p-2 mb-2">
       <p>"<%= q.text %>"</p>
-      <p>
-        <em>
-          – <%= q.character&.name || "Unknown Character" %>,
-          <%= q.episode&.title || "Unknown Episode" %>
-        </em>
-      </p>
+      <p><em>– <%= q.character&.name || "Unknown Character" %>, <%= q.episode&.title || "Unknown Episode" %></em></p>
     </div>
   <% end %>
 <% else %>

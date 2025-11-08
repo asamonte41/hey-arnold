@@ -1,7 +1,6 @@
 class EpisodesController < ApplicationController
   def index
-    # Kaminari pagination
-    @episodes = Episode.page(params[:page]).per(10)
+    @episodes = Episode.page(params[:page]).per(10) # Kaminari pagination
   end
 
   def show
@@ -10,8 +9,7 @@ class EpisodesController < ApplicationController
       redirect_to episodes_path, alert: "Episode not found."
       return
     end
-
-    @characters = @episode.characters if @episode.respond_to?(:characters)
-    @quotes = @episode.quotes if @episode.respond_to?(:quotes)
+    @characters = @episode.characters
+    @quotes = @episode.quotes
   end
 end

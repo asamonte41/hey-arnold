@@ -20,19 +20,27 @@
 
   <body>
     <!-- Navigation Bar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4 p-3">
-    <div class="container">
-      <%= link_to "Hey Arnold!", root_path, class: "navbar-brand fw-bold" %>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+  <div class="container">
+    <%= link_to "Hey Arnold", root_path, class: "navbar-brand" %>
 
-      <div class="navbar-nav">
-        <%= link_to "About", about_path, class: "nav-link" %>
-        <%= link_to "Characters", characters_path, class: "nav-link" %>
-        <%= link_to "Episodes", episodes_path, class: "nav-link" %>
-        <%= link_to "Quotes", quotes_path, class: "nav-link" %>
+    <ul class="navbar-nav me-auto">
+      <li class="nav-item">
+        <%= link_to "Characters", characters_path, class: "nav-link #{active_class(characters_path)}" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Episodes", episodes_path, class: "nav-link #{active_class(episodes_path)}" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Quotes", quotes_path, class: "nav-link #{active_class(quotes_path)}" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "About", about_path, class: "nav-link #{active_class(about_path)}" %>
+      </li>
+    </ul>
+  </div>
+</nav>
 
-      </div>
-    </div>
-  </nav>
 
   <div class="container">
     <% if notice %>

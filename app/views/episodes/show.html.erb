@@ -5,34 +5,20 @@
 <hr>
 
 <h2>Characters in this Episode</h2>
-<% if @characters.present? %>
-  <div class="d-flex flex-wrap gap-3">
-    <% @characters.each do |c| %>
-      <div class="border p-2 text-center" style="width: 150px;">
-        <% if c.image_url.present? %>
-          <%= image_tag c.image_url, alt: c.name, width: 100, class: "mb-2" %>
-        <% else %>
-          <%= image_tag "placeholder.png", width: 100, class: "mb-2" %>
-        <% end %>
-        <p><%= link_to c.name, character_path(c) %></p>
-      </div>
-    <% end %>
-  </div>
-<% else %>
-  <p>No characters found for this episode.</p>
-<% end %>
+<div class="d-flex flex-wrap gap-3">
+  <% @characters.each do |c| %>
+    <div class="border p-2 text-center" style="width: 150px;">
+      <%= image_tag c.image_path, width: 100, alt: c.name %>
+      <p><%= link_to c.name, character_path(c) %></p>
+    </div>
+  <% end %>
+</div>
 
 <hr>
 
 <h2>Quotes from This Episode</h2>
-<% if @quotes.present? %>
-  <% @quotes.each do |q| %>
-    <p>"<%= q.text %>" – <%= q.character.name if q.character %></p>
-  <% end %>
-<% else %>
-  <p>No quotes found for this episode.</p>
+<% @quotes.each do |q| %>
+  <p>"<%= q.text %>" – <%= q.character&.name || "Unknown Character" %></p>
 <% end %>
-
-<hr>
 
 <p><%= link_to "Back to Episodes", episodes_path, class: "btn btn-secondary mt-3" %></p>
