@@ -4,11 +4,13 @@
   <% @characters.each do |c| %>
     <div class="card mb-3 p-3 d-flex flex-row align-items-center">
       <div style="margin-right: 20px;">
-        <%= image_tag c.image_path, width: 100, alt: c.name || "Unknown Character" %>
+        <% image_path = c.image_url.present? ? "characters/#{c.image_url}" : "placeholder.png" %>
+        <%= image_tag image_path, width: 100, alt: c.name.presence || "Unknown Character" %>
       </div>
       <div>
-        <h3><%= link_to (c.name.presence || "Unknown Character"), character_path(c) %></h3>
-        <p><%= c.role.presence || "No role information" %></p>
+        <h3><%= link_to c.name.presence || "Unknown", character_path(c) %></h3>
+        <p><strong>Role:</strong> <%= c.role.presence || "No role info" %></p>
+        <p><strong>Location:</strong> <%= c.location&.name || "Unknown" %></p>
       </div>
     </div>
   <% end %>

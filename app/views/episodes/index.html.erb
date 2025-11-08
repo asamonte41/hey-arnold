@@ -1,14 +1,27 @@
 <h1>Episodes</h1>
 
+<!-- Episodes Table -->
 <% if @episodes.present? %>
-  <% @episodes.each do |e| %>
-    <div class="border p-2 mb-2">
-      <h4><%= link_to e.title, episode_path(e) %></h4>
-      <p>Season <%= e.season %> – Episode <%= e.episode_number %></p>
-    </div>
-  <% end %>
-
-  <%= paginate @episodes %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Season</th>
+        <th>Episode</th>
+        <th>Air Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @episodes.each do |e| %>
+        <tr>
+          <td><%= link_to e.title, episode_path(e) %></td>
+          <td><%= e.season %></td>
+          <td><%= e.episode_number %></td>
+          <td><%= e.air_date || "Unknown" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% else %>
   <p>No episodes found.</p>
 <% end %>

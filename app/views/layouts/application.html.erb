@@ -1,57 +1,63 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= content_for(:title) || "Hey Arnold" %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title><%= content_for(:title) || "Hey Arnold" %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= yield :head %>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
 
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload", media: "all" %>
-    <%= javascript_importmap_tags %>
-  </head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="<%= root_path %>">Hey Arnold</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-  <body>
-    <!-- Navigation Bar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Menu
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navDropdown">
+              <li><%= link_to "Characters", characters_path, class: "dropdown-item" %></li>
+              <li><%= link_to "Episodes", episodes_path, class: "dropdown-item" %></li>
+              <li><%= link_to "Locations", locations_path, class: "dropdown-item" %></li>
+              <li><%= link_to "Quotes", quotes_path, class: "dropdown-item" %></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><%= link_to "About", about_path, class: "dropdown-item" %></li>
+            </ul>
+          </li>
+        </ul>
+
+        <!-- Search Form with Location Filter -->
+        <%= form_with url: characters_path, method: :get, local: true, class: "d-flex" do %>
+          <%= text_field_tag :query, params[:query], placeholder: "Search Characters", class: "form-control me-2" %>
+          <%= select_tag :location, options_for_select(["All Locations"] + Location.pluck(:name), params[:location]), class: "form-select me-2" %>
+          <%= submit_tag "Search", class: "btn btn-outline-light" %>
+        <% end %>
+      </div>
+    </div>
+  </nav>
+
   <div class="container">
-    <%= link_to "Hey Arnold", root_path, class: "navbar-brand" %>
-
-    <ul class="navbar-nav me-auto">
-      <li class="nav-item">
-        <%= link_to "Characters", characters_path, class: "nav-link #{active_class(characters_path)}" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "Episodes", episodes_path, class: "nav-link #{active_class(episodes_path)}" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "Quotes", quotes_path, class: "nav-link #{active_class(quotes_path)}" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "About", about_path, class: "nav-link #{active_class(about_path)}" %>
-      </li>
-    </ul>
-  </div>
-</nav>
-
-
-  <div class="container">
-    <% if notice %>
-      <p class="alert alert-success"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-danger"><%= alert %></p>
+    <% if flash[:alert] %>
+      <div class="alert alert-warning"><%= flash[:alert] %></div>
     <% end %>
 
     <%= yield %>
   </div>
-</body>
 
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>

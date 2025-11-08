@@ -1,4 +1,6 @@
 class Character < ApplicationRecord
+  belongs_to :location
+  has_many :appearances
   has_many :quotes, dependent: :destroy
   has_many :episodes, through: :quotes
 

@@ -1,12 +1,17 @@
 <h1>Quotes</h1>
 
 <% if @quotes.present? %>
-  <% @quotes.each do |q| %>
-    <div class="border p-2 mb-2">
-      <p>"<%= q.text %>"</p>
-      <p><em>– <%= q.character&.name || "Unknown Character" %>, <%= q.episode&.title || "Unknown Episode" %></em></p>
-    </div>
-  <% end %>
+  <div class="list-group">
+    <% @quotes.each do |q| %>
+      <div class="list-group-item">
+        <p>"<%= q.text %>"</p>
+        <small>
+          — <%= link_to q.character.name, character_path(q.character) %>
+          in <%= link_to q.episode.title, episode_path(q.episode) %>
+        </small>
+      </div>
+    <% end %>
+  </div>
 <% else %>
   <p>No quotes found.</p>
 <% end %>
