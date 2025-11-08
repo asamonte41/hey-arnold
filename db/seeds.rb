@@ -2,7 +2,7 @@
 
 puts "Seeding data..."
 
-# Clear all data first (order matters for foreign keys)
+# --- Clear existing data (order matters for foreign keys) ---
 Quote.destroy_all
 Appearance.destroy_all
 Character.destroy_all
@@ -28,15 +28,7 @@ characters = [
   { name: "Grandma Gertie", role: "Arnold’s grandmother", description: "Loving and quirky, with a flair for the dramatic.", image_url: "grandma.jpg", location_id: boarding_house.id }
 ]
 
-characters.each do |char|
-  Character.create!(char)
-end
-
-
-characters.each do |char|
-  Character.create!(char)
-end
-
+characters.each { |char| Character.create!(char) }
 puts "Seeded #{Character.count} characters successfully!"
 
 # --- Episodes ---
@@ -47,14 +39,10 @@ episodes = [
   { title: "Arnold Saves the Day", season: 3, episode_number: 2, description: "Arnold steps in to solve problems around the neighborhood." }
 ]
 
-episodes.each do |ep|
-  Episode.create!(ep)
-end
-
+episodes.each { |ep| Episode.create!(ep) }
 puts "Seeded #{Episode.count} episodes successfully!"
 
-# --- Quotes ---
-# Find characters and episodes first
+# --- Quotes (manual ones first) ---
 arnold = Character.find_by(name: "Arnold Shortman")
 helga = Character.find_by(name: "Helga Pataki")
 gerald = Character.find_by(name: "Gerald Johanssen")
@@ -66,7 +54,6 @@ ep2 = Episode.find_by(title: "Helga on the Couch")
 ep3 = Episode.find_by(title: "Gerald's Secret")
 ep4 = Episode.find_by(title: "Arnold Saves the Day")
 
-
 quotes = [
   { text: "Move it, football head!", character: helga, episode: ep1 },
   { text: "It's all part of the plan.", character: arnold, episode: ep2 },
@@ -75,10 +62,19 @@ quotes = [
   { text: "Being smart isn’t everything, you gotta have heart too.", character: phoebe, episode: ep2 }
 ]
 
-quotes.each do |q|
-  Quote.create!(q)
+quotes.each { |q| Quote.create!(q) }
+
+# --- Faker-generated random quotes ---
+characters = Character.all
+episodes = Episode.all
+
+200.times do
+  Quote.create!(
+    text: Faker::TvShows::HeyArnold.quote,
+    character: characters.sample,
+    episode: episodes.sample
+  )
 end
 
-
-puts "Seeded #{Quote.count} quotes successfully!"
+puts "Seeded #{Quote.count} total quotes successfully!"
 puts "Seeding complete!"

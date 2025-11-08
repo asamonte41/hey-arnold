@@ -4,6 +4,9 @@ class Character < ApplicationRecord
   has_many :quotes, dependent: :destroy
   has_many :episodes, through: :quotes
 
+  validates :name, presence: true
+  validates :role, presence: true
+
   # Optional: fallback for missing image
   def image_path
     if image_url.present?
