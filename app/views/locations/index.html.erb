@@ -1,0 +1,14 @@
+<h1>Locations</h1>
+
+<% if @locations.present? %>
+  <ul>
+    <% @locations.each do |location| %>
+      <li>
+        <h3><%= location.name %></h3>
+        <p><%= location.description %></p>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No locations found.</p>
+<% end %>
