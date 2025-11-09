@@ -26,14 +26,21 @@
   <% @characters.each do |c| %>
     <div class="card mb-3 p-3 d-flex flex-row align-items-center">
       <div style="margin-right: 20px;">
-        <% image_path = c.image_url.present? ? "characters/#{c.image_url}" : "placeholder.png" %>
-        <%= image_tag image_path, width: 100, alt: c.name.presence || "Unknown Character" %>
-      </div>
-      <div>
-        <h3><%= link_to c.name.presence || "Unknown", character_path(c) %></h3>
-        <p><strong>Role:</strong> <%= c.role.presence || "No role info" %></p>
-        <p><strong>Location:</strong> <%= c.location&.name || "Unknown" %></p>
-      </div>
+  <%
+    # Determine the correct file path
+    base_name = c.image_url.present? ? c.image_url.sub(/\.(png|jpg)$/, '') : "placeholder"
+    # Try png first, then jpg, then placeholder
+    image_path = if Rails.application.assets.find_asset("characters/#{base_name}.png")
+                   "characters/#{base_name}.png"
+                 elsif Rails.application.assets.find_asset("characters/#{base_name}.jpg")
+                   "characters/#{base_name}.jpg"
+                 else
+                   "placeholder.png"
+                 end
+  %>
+  <%= image_tag image_path, width: 100, alt: c.name.presence || "Unknown Character" %>
+</div>
+
     </div>
   <% end %>
 <% else %>

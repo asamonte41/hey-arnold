@@ -16,8 +16,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_08_153321) do
     t.integer "episode_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index [ "character_id" ], name: "index_appearances_on_character_id"
-    t.index [ "episode_id" ], name: "index_appearances_on_episode_id"
+    t.index ["character_id"], name: "index_appearances_on_character_id"
+    t.index ["episode_id"], name: "index_appearances_on_episode_id"
   end
 
   create_table "characters", force: :cascade do |t|
@@ -28,7 +28,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_08_153321) do
     t.integer "location_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index [ "location_id" ], name: "index_characters_on_location_id"
+    t.index ["location_id"], name: "index_characters_on_location_id"
   end
 
   create_table "episodes", force: :cascade do |t|
@@ -55,8 +55,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_08_153321) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "episode_id", null: false
-    t.index [ "character_id" ], name: "index_quotes_on_character_id"
-    t.index [ "episode_id" ], name: "index_quotes_on_episode_id"
+    t.index ["character_id"], name: "index_quotes_on_character_id"
+    t.index ["episode_id"], name: "index_quotes_on_episode_id"
   end
 
   add_foreign_key "appearances", "characters"

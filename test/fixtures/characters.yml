@@ -1,15 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: "Arnold"
-  role: "Protagonist"
-  description: "Smart, kind, and brave."
+  name: Arnold
+  role: Main Character
+  description: "Smart, kind-hearted, and brave."
   image_url: "arnold.png"
-  location: one   # refers to locations.yml label
+  location: one
 
 two:
-  name: "Helga"
-  role: "Antagonist/Complex"
-  description: "Tough exterior but secretly loves Arnold."
-  image_url: "helga.png"
+  name: Helga
+  role: Supporting Character
+  description: "Tough exterior, secret soft side."
+  image_url: "helga.jpg"
   location: two

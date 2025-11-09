@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: "Hillwood Neighborhood"
-  description: "The main neighborhood where Arnold lives."
+  name: Hillwood
+  description: "Neighborhood where Arnold lives."
 
 two:
-  name: "Downtown"
-  description: "The city center where most adventures happen."
+  name: School
+  description: "PS 118 - Arnold's school."

@@ -6,7 +6,8 @@ class Character < ApplicationRecord
 
   validates :name, presence: true
   validates :role, presence: true
-
+  validates :description, presence: true
+  validates :image_url, presence: true
   # Optional: fallback for missing image
   def image_path
     if image_url.present?
