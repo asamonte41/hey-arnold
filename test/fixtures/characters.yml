@@ -18,54 +18,55 @@ gerald:
   name: Gerald
   role: Supporting Character
   description: "Arnold's best friend."
-  image_url: "gerald.png"
-  location: ps118
+  image_url: "gerald.jpg"
+  location: hillwood
 
 phoebe:
   name: Phoebe
   role: Supporting Character
-  description: "Smart and loyal friend."
-  image_url: "phoebe.png"
+  description: "Smart, polite, and bossy."
+  image_url: "phoebe.jpg"
   location: ps118
 
 grandma:
   name: Grandma
   role: Supporting Character
-  description: "Arnold's wise grandmother."
-  image_url: "grandma.png"
+  description: "Arnold's loving grandmother."
+  image_url: "grandma.jpg"
   location: hillwood
 
 grandpa:
   name: Grandpa
   role: Supporting Character
-  description: "Arnold's grumpy grandfather."
-  image_url: "grandpa.png"
+  description: "Arnold's wise grandfather."
+  image_url: "grandpa.jpg"
   location: hillwood
 
 harold:
   name: Harold
   role: Supporting Character
-  description: "Classmate, big guy."
-  image_url: "harold.png"
+  description: "Big, strong, sometimes clumsy."
+  image_url: "harold.jpg"
   location: ps118
 
 rhonda:
   name: Rhonda
   role: Supporting Character
-  description: "Popular girl at school."
-  image_url: "rhonda.png"
-  location: ps118
+  description: "Fashion-conscious, popular."
+  image_url: "rhonda.jpg"
+  location: sunset
 
 sid:
   name: Sid
   role: Supporting Character
-  description: "Mischievous classmate."
-  image_url: "sid.png"
+  description: "Troublemaker, mischievous."
+  image_url: "sid.jpg"
   location: ps118
 
 stinky:
   name: Stinky
   role: Supporting Character
-  description: "Another classmate."
-  image_url: "stinky.png"
-  location: ps118
+  description: "Tall, goofy, always hungry."
+  image_url: "stinky.jpg"
+  location: hillwood
+

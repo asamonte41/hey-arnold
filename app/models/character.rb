@@ -1,22 +1,25 @@
 class Character < ApplicationRecord
   belongs_to :location
-  has_many :appearances, dependent: :destroy
+  has_many :appearances
   has_many :quotes, dependent: :destroy
-
-  # Episodes via appearances
-  has_many :appeared_episodes, through: :appearances, source: :episode
-
-  # Episodes via quotes (optional, if you want quotes separately)
-  has_many :quoted_episodes, through: :quotes, source: :episode
+  has_many :episodes, through: :quotes
 
   validates :name, presence: true
   validates :role, presence: true
   validates :description, presence: true
   validates :image_url, presence: true
 
+  # Returns the correct image path for the character, handling png/jpg or fallback
   def image_path
-    if image_url.present?
-      image_url.start_with?("http") ? image_url : "characters/#{image_url}"
+    return "placeholder.png" unless image_url.present?
+
+    base_name = image_url.sub(/\.(png|jpg)$/, '') # remove extension if present
+
+    # Check assets for png or jpg
+    if Rails.application.assets.find_asset("characters/#{base_name}.png")
+      "characters/#{base_name}.png"
+    elsif Rails.application.assets.find_asset("characters/#{base_name}.jpg")
+      "characters/#{base_name}.jpg"
     else
       "placeholder.png"
     end
