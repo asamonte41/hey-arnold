@@ -5,68 +5,68 @@ arnold:
   role: Main Character
   description: "Smart, kind-hearted, and brave."
   image_url: "arnold.png"
-  location: hillwood
+  location: one
 
 helga:
   name: Helga
   role: Supporting Character
   description: "Tough exterior, secret soft side."
   image_url: "helga.jpg"
-  location: ps118
+  location: two
 
 gerald:
   name: Gerald
   role: Supporting Character
   description: "Arnold's best friend."
   image_url: "gerald.jpg"
-  location: hillwood
+  location: one
 
 phoebe:
   name: Phoebe
   role: Supporting Character
   description: "Smart, polite, and bossy."
   image_url: "phoebe.jpg"
-  location: ps118
+  location: two
 
 grandma:
   name: Grandma
   role: Supporting Character
   description: "Arnold's loving grandmother."
   image_url: "grandma.jpg"
-  location: hillwood
+  location: one
 
 grandpa:
   name: Grandpa
   role: Supporting Character
   description: "Arnold's wise grandfather."
   image_url: "grandpa.jpg"
-  location: hillwood
+  location: one
 
 harold:
   name: Harold
   role: Supporting Character
   description: "Big, strong, sometimes clumsy."
   image_url: "harold.jpg"
-  location: ps118
+  location: two
 
 rhonda:
   name: Rhonda
   role: Supporting Character
   description: "Fashion-conscious, popular."
   image_url: "rhonda.jpg"
-  location: sunset
+  location: three
 
 sid:
   name: Sid
   role: Supporting Character
   description: "Troublemaker, mischievous."
   image_url: "sid.jpg"
-  location: ps118
+  location: two
 
 stinky:
   name: Stinky
   role: Supporting Character
   description: "Tall, goofy, always hungry."
   image_url: "stinky.jpg"
-  location: hillwood
+  location: one
 
