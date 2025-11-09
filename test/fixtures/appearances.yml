@@ -1,9 +1,29 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  character: one
-  episode: one
+appearance1:
+  character: arnold
+  episode: episode1
 
-two:
-  character: two
-  episode: two
+appearance2:
+  character: helga
+  episode: episode2
+
+appearance3:
+  character: gerald
+  episode: episode3
+
+appearance4:
+  character: phoebe
+  episode: episode4
+
+appearance5:
+  character: harold
+  episode: episode5
+
+appearance6:
+  character: phoebe
+  episode: episode6
+
+appearance7:
+  character: arnold
+  episode: episode7

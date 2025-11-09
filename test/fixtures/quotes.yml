@@ -1,12 +1,38 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+quote1:
   text: "Move it, football head!"
-  character: one   # refers to characters.yml label
-  episode: one     # refers to episodes.yml label
+  character: arnold
+  episode: episode1
 
-two:
-  text: "I secretly love you, Arnold."
-  character: two
-  episode: two
+quote2:
+  text: "I hate you, Arnold!"
+  character: helga
+  episode: episode2
+
+quote3:
+  text: "We need a plan."
+  character: gerald
+  episode: episode3
+
+quote4:
+  text: "Smart kids rule!"
+  character: phoebe
+  episode: episode4
+
+quote5:
+  text: "Back off!"
+  character: harold
+  episode: episode5
+
+quote6:
+  text: "Eureka!"
+  character: phoebe
+  episode: episode6
+
+quote7:
+  text: "Mystery solved."
+  character: arnold
+  episode: episode7
+
 

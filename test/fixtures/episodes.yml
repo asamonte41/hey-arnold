@@ -1,16 +1,50 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+episode1:
   title: "Downtown Adventure"
   season: 1
   episode_number: 1
-  air_date: 2025-11-07
-  synopsis: "Arnold explores the city with friends."
+  air_date: 2025-11-01
+  synopsis: "Arnold and friends explore downtown."
 
-two:
+episode2:
   title: "Helga's Secret"
   season: 1
   episode_number: 2
-  air_date: 2025-11-07
-  synopsis: "Helga's secret crush on Arnold is revealed."
+  air_date: 2025-11-02
+  synopsis: "Helga struggles with her secret crush."
 
+episode3:
+  title: "School Play"
+  season: 1
+  episode_number: 3
+  air_date: 2025-11-03
+  synopsis: "The kids put on a school play."
+
+episode4:
+  title: "Grandma's Story"
+  season: 1
+  episode_number: 4
+  air_date: 2025-11-04
+  synopsis: "Grandma tells a story about her youth."
+
+episode5:
+  title: "Harold's Big Idea"
+  season: 1
+  episode_number: 5
+  air_date: 2025-11-05
+  synopsis: "Harold comes up with a crazy plan."
+
+episode6:
+  title: "Phoebe's Invention"
+  season: 1
+  episode_number: 6
+  air_date: 2025-11-06
+  synopsis: "Phoebe builds a new invention."
+
+episode7:
+  title: "Sunset Mystery"
+  season: 1
+  episode_number: 7
+  air_date: 2025-11-07
+  synopsis: "The kids investigate a mystery at sunset."

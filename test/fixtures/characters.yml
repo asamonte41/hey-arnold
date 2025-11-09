@@ -1,15 +1,71 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+arnold:
   name: Arnold
   role: Main Character
   description: "Smart, kind-hearted, and brave."
   image_url: "arnold.png"
-  location: one
+  location: hillwood
 
-two:
+helga:
   name: Helga
   role: Supporting Character
   description: "Tough exterior, secret soft side."
   image_url: "helga.jpg"
-  location: two
+  location: ps118
+
+gerald:
+  name: Gerald
+  role: Supporting Character
+  description: "Arnold's best friend."
+  image_url: "gerald.png"
+  location: ps118
+
+phoebe:
+  name: Phoebe
+  role: Supporting Character
+  description: "Smart and loyal friend."
+  image_url: "phoebe.png"
+  location: ps118
+
+grandma:
+  name: Grandma
+  role: Supporting Character
+  description: "Arnold's wise grandmother."
+  image_url: "grandma.png"
+  location: hillwood
+
+grandpa:
+  name: Grandpa
+  role: Supporting Character
+  description: "Arnold's grumpy grandfather."
+  image_url: "grandpa.png"
+  location: hillwood
+
+harold:
+  name: Harold
+  role: Supporting Character
+  description: "Classmate, big guy."
+  image_url: "harold.png"
+  location: ps118
+
+rhonda:
+  name: Rhonda
+  role: Supporting Character
+  description: "Popular girl at school."
+  image_url: "rhonda.png"
+  location: ps118
+
+sid:
+  name: Sid
+  role: Supporting Character
+  description: "Mischievous classmate."
+  image_url: "sid.png"
+  location: ps118
+
+stinky:
+  name: Stinky
+  role: Supporting Character
+  description: "Another classmate."
+  image_url: "stinky.png"
+  location: ps118

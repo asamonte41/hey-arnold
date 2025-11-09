@@ -1,9 +1,14 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+
+hillwood:
   name: Hillwood
   description: "Neighborhood where Arnold lives."
 
-two:
-  name: School
-  description: "PS 118 - Arnold's school."
+ps118:
+  name: PS 118
+  description: "Arnold's school."
+
+sunset:
+  name: Sunset
+  description: "Another location in the show."
