@@ -13,7 +13,7 @@ class Character < ApplicationRecord
   def image_path
     return "placeholder.png" unless image_url.present?
 
-    base_name = image_url.sub(/\.(png|jpg)$/, '') # remove extension if present
+    base_name = image_url.sub(/\.(png|jpg)$/, "") # remove extension if present
 
     # Check assets for png or jpg
     if Rails.application.assets.find_asset("characters/#{base_name}.png")

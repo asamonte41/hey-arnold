@@ -5,9 +5,10 @@ class QuotesController < ApplicationController
 
     @quotes = Quote.includes(:character, :episode).all
 
-    # Filter by quote text
+    # Filter by quote text (SQLite-safe, case-insensitive)
     if @query.present?
-      @quotes = @quotes.where("text LIKE ?", "%#{@query}%")
+      search_term = "%#{@query.downcase}%"
+      @quotes = @quotes.where("LOWER(text) LIKE ?", search_term)
     end
 
     # Filter by character
