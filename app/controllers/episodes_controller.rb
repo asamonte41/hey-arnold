@@ -1,6 +1,6 @@
 class EpisodesController < ApplicationController
   def index
-    @episodes = Episode.all
+    @episodes = Episode.order(:season, :episode_number).page(params[:page]).per(10) # Paginate episodes, 10 per page
   end
 
   def show

@@ -16,6 +16,7 @@ class QuotesController < ApplicationController
       @quotes = @quotes.joins(:character).where(characters: { name: @character_filter })
     end
 
-    @quotes = @quotes.order(:created_at)
+    # Order by creation and paginate (20 per page)
+    @quotes = @quotes.order(:created_at).page(params[:page]).per(20)
   end
 end
