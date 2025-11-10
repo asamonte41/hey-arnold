@@ -16,7 +16,30 @@
   <li><strong>Quotes:</strong> id, text, character_id, episode_id</li>
 </ul>
 
+
 <p>The integration between datasets is handled through relational links. For example, quotes reference both the character who said them and the episode they appear in. This ensures that data from Faker and the Hey Arnold API can be combined seamlessly, providing a complete view of the Hey Arnold world.</p>
 
-<h2>ERD</h2>
-<img src="/images/erd.png" alt="ERD diagram">
+<h2>Entity Relationship Diagram</h2>
+
+<p>Here’s my ERD: </p>
+<%= image_tag("ITRDP.drawio.png", alt: "ERD Diagram", class: "img-fluid") %>
+
+<p>The diagram displays:</p>
+
+<p><strong>Entities:</strong></p>
+<ul>
+  <li><strong>Locations:</strong> Stores location information.</li>
+  <li><strong>Characters:</strong> Stores character details with a foreign key to Locations.</li>
+  <li><strong>Episodes:</strong> Stores episodes information.</li>
+  <li><strong>Quotes:</strong> Join table connecting Characters and Episodes with quote text.</li>
+  <li><strong>Appearance:</strong> Pure join table for the many-to-many relationship between Characters and Episodes.</li>
+</ul>
+
+<p><strong>Relationships:</strong></p>
+<ul>
+  <li>Locations → Characters (1:many)</li>
+  <li>Characters → Quotes (1:many)</li>
+  <li>Episodes → Quotes (1:many)</li>
+  <li>Characters → Appearances (1:many)</li>
+  <li>Episodes → Appearances (1:many)</li>
+</ul>
